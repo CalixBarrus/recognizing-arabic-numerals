@@ -1,0 +1,115 @@
+% This creates a document based on the AMS
+% (American Mathematical Society) article style.
+\documentclass[oneside,12pt]{amsart}
+
+% This package simply sets the margins to be 1.00 inch.
+% If you prefer 1.25 in margins change the value.
+% If you look up the documentation for the geometry package
+% you can find out how to control the size of all four margins
+% independently of each other.
+\usepackage[margin=1.00in]{geometry}
+
+% These packages include nice commands from AMS-LaTeX
+% AMS-LaTeX has lots of nice equation environment that are better
+% than the plan LaTeX options.
+\usepackage{amssymb,amsmath,amsthm, enumitem, bm, graphicx, mathrsfs, bbm}
+
+% Make the space between lines slightly more
+% generous than normal single spacing, but compensate
+% so that the spacing between rows of matrices still
+% looks normal.  Note that 1.1=1/.9090909...
+\renewcommand{\baselinestretch}{1.1}
+\renewcommand{\arraystretch}{.91}
+% If you want even more space between lines try
+% \renewcommand{\baselinestretch}{1.5}
+% \renewcommand{\arraystretch}{0.67}
+
+% Define a new environment for exercises.
+\newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 }}{}
+
+% Define shortcut commands for commonly used symbols.
+\newcommand{\R}{\mathbb{R}} % Real numbers
+\newcommand{\C}{\mathbb{C}} % Complex numbers
+\newcommand{\Z}{\mathbb{Z}} % Integers
+\newcommand{\Q}{\mathbb{Q}} % Rational numbers
+\newcommand{\N}{\mathbb{N}} % Natural numbers
+\newcommand{\calP}{\mathcal{P}} % Calligraphic P for power set
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\F}{\mathbb{F}} % Field
+\newcommand{\E}{\mathbb{E}} % Expected Value
+
+\newcommand{\unif}{\text{Uniform}} 
+\newcommand{\normaldist}{\mathcal{N}} 
+\newcommand{\gammadist}{\text{Gamma}} 
+\newcommand{\empirical}{\text{Emp}} 
+\newcommand{\argmax}{\text{ArgMax}} 
+\newcommand{\argmin}{\text{ArgMin}} 
+\newcommand{\pdf}{f} 
+\newcommand{\given}{|} 
+\newcommand{\KL}{\mathbb{KL}} 
+
+% vectors and subspaces
+\renewcommand{\vec}[1]{{\ensuremath{\bm{#1}}}}
+\newcommand{\0}{{\vec  0 }}
+\newcommand{\1}{{\mathbbm{  1} }}
+\newcommand{\J}{{\vec  J }}
+\renewcommand{\a}{{\vec  a }}
+\renewcommand{\b}{{\vec  b }}
+\renewcommand{\c}{{\vec  c }}
+\renewcommand{\d}{{\vec  d }}
+\newcommand{\e}{{\vec  e }}
+\newcommand{\f}{{\vec  f }}
+\newcommand{\g}{{\vec  g }}
+\newcommand{\h}{{\vec  h }}
+\renewcommand{\k}{{\vec  k }}
+\renewcommand{\l}{{\boldsymbol{\ell} }}  % lowercase l looks too much like 1.  
+\newcommand{\m}{{\vec  m }}
+\newcommand{\p}{{\vec  p }}
+\newcommand{\q}{{\vec  q }}
+\renewcommand{\r}{{\vec  r }}
+\newcommand{\s}{{\vec  s }}
+\renewcommand{\t}{{\vec  t }}
+\let\uaccent\u
+\renewcommand{\u}{{\vec  u }}
+\let\vaccent\v
+\renewcommand{\v}{{\vec  v }}
+\newcommand{\w}{{\vec  w }}
+\newcommand{\x}{{\vec  x }}
+\newcommand{\y}{{\vec  y }}
+\newcommand{\z}{{\vec  z }}
+\newcommand{\bZ}{{\vec{Z}}}
+\newcommand{\X}{{\mathbb{X}}}
+\renewcommand{\L}{{\mathscr{L}}}
+
+% Define a function called "span" that would be useful in linear algebra.
+\DeclareMathOperator{\vsspan}{span}
+
+% Define functions for the real and imaginary parts of a complex number.
+% These could be used in place of the built in commands \Re and \Im,
+% which print Re and Im in a font that some people don't like.
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    
+    % If you use Overleaf, the name of the project will be determined by
+    % what you enter as the document title.
+    \title{Vol 3 Semester 2 Project}
+    
+    \begin{flushright}
+
+    \end{flushright}
+    
+
+    
+    %---------------------------------
+    % Don't change anything below here
+    %---------------------------------
+    
+    
+\end{document}
