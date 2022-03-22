@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[63]:
+# In[136]:
 
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sp
+import pickle
 
 import gmmhmm
 
@@ -74,7 +75,7 @@ plt.show()
 
 # # Train HMMs
 
-# In[ ]:
+# In[135]:
 
 
 numbers = np.array([train[train_target_number == num,:] for num in np.unique(train_target_number)])
@@ -89,4 +90,20 @@ for single_number_data in numbers:
     hmm.covars_prior = 0.01
     hmm.fit(single_number_data, init_params='mc', var=0.1)
     number_models.append(hmm)
+
+
+# In[139]:
+
+
+for i,model in enumerate(number_models):
+    with open(f"model_digit_{i}.pk", 'wb') as fout:
+        pickle.dump(model,fout)
+
+
+# # Test HMMs
+
+# In[ ]:
+
+
+
 
