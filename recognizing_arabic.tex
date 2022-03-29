@@ -109,7 +109,7 @@
     \end{abstract}
     
     \section{Problem Statement and Motivation}
-    Speech recognition is a big part of many of the technologies around us, from our phones to our homes. It can simplify our lives and make information much easier to capture and send. Most of the research, though, has been centered on speech recognition in the English language. A significantly smaller amount of research has been dedicated to other languages. The question is, do the same principles used in English language recognition apply to other languages? Research done in “Speech Recognition of Moroccan Dialect Using Hidden Markov Models” notes that more work needs to be done to recognize words spoken in Arabic since there are so many dialects. Typical methods used for English just don’t work as well, and it is only after identifying the dialect of the speaker that the speaker’s words can be accurately classified. Another paper, “Application of Hidden Markov Models in Speech Command Recognition”, noticed that model accuracy was much lower than normal when trying to identify Chinese phrases with typical methods used in the English language. Therefore, this project seeks to expand on how well HMMs and other classifiers work with speech recognition in languages other than English. For this project, we will be analyzing sound files of native Arabic speakers speaking the numbers 0 through 9. We will then test our model against a test dataset to see if we can determine which number is being spoken and the gender of the speaker. 
+    Speech recognition is a big part of many of the technologies around us, from our phones to our homes. It can simplify our lives and make information much easier to capture and send. Most of the research, though, has been centered on speech recognition in the English language. A significantly smaller amount of research has been dedicated to other languages. The question is, do the same principles used in English language recognition apply to other languages? Research done in “Speech Recognition of Moroccan Dialect Using Hidden Markov Models” \cite{RefWorks:RefID:42-mouaz2019speech} notes that more work needs to be done to recognize words spoken in Arabic since there are so many dialects. Typical methods used for English just don’t work as well, and it is only after identifying the dialect of the speaker that the speaker’s words can be accurately classified. Another paper, “Application of Hidden Markov Models in Speech Command Recognition” \cite{RefWorks:RefID:41-2020application}, noticed that model accuracy was much lower than normal when trying to identify Chinese phrases with typical methods used in the English language. Therefore, this project seeks to expand on how well HMMs and other classifiers work with speech recognition in languages other than English. For this project, we will be analyzing sound files of native Arabic speakers speaking the numbers 0 through 9. We will then test our model against a test dataset to see if we can determine which number is being spoken and the gender of the speaker. 
     
     \section{Data}
     Our data came from the database, “Spoken Arabic Digits” and was produced by the Laboratory of Automatic and Signals, University of Badji-Mokhtar, Annaba, Algeria. The dataset contains 8800 (10 digits x 10 repetitions x 88 speakers) time series of 13 Frequency Cepstral
@@ -156,7 +156,7 @@
     Our initial results with GMMHMMs suggest a measure of careful optimism that, with more time and training and using more of the data our GMMHMMs will perform better and better. 
     
     \section{Ethical Considerations}
-    There are several ethical considerations for the use and misuse of this technique. It could be used to spy on and censor people in Arab countries, and could be a devastating tool if it fell into the hands of the wrong people. If used maliciously, it could be a vehicle for political control. 
+    There are several ethical considerations for the use and misuse of this technique. It could be used to spy on and censor people in Arab countries. In the hands of the wrong people, it could be used to control people with devastating effects.. If used maliciously, it could be a vehicle for political control. 
     % add in good ethical stuff on low resource languages
     
     \section{Conclusion}
@@ -168,5 +168,7 @@
     % Don't change anything below here
     %---------------------------------
     
+\bibliographystyle{plain}
+\bibliography{export}    
     
 \end{document}
