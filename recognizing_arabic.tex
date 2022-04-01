@@ -7,7 +7,7 @@
 % If you look up the documentation for the geometry package
 % you can find out how to control the size of all four margins
 % independently of each other.
-\usepackage[margin=1.00in]{geometry}
+%\usepackage[margin=1.00in]{geometry}
 
 % These packages include nice commands from AMS-LaTeX
 % AMS-LaTeX has lots of nice equation environment that are better
@@ -119,6 +119,8 @@
     We are using a set of Gaussian Mixture Model Hidden Markov Models (GMMHMMs) to classify both the digit said and the gender of the speaker. We chose this because it is a good model for classifying time series data when we know what the possible classifications are and when we have known observations of these classifications. We compare the success of this method to a UMAP dimensional reduction, paired with a k-nearest neighbors classifier.
     For the formulation of our UMAP classifier, we truncated the data from each utterance to be uniform throughout the dataset. Because the shortest utterance was only four rows of MFCC, (these ranged from 4 - 90+ rows of MFCCs per utterance) we only considered the first four rows of each utterance for both the training and test sets. The next step was to perform the actual dimensionality reduction, which we did using UMAP to a 2-dimensional space. This resulted in an effective visualization of the data. After creating the dimensionality reduction function using UMAP, we transformed all the data through the function and visualized it. Then, using information about the training set, we used a SciKitLearn’s k-nearest neighbors implementation to classify the data points from the test set.
     
+    In addition to UMAP and GMMHMMs, we used a K-Nearest-Neighbors algorithm using a Dynamic Time Warping (DTW) distance metric. DTW is a distance metric that is designed to be robust to the types of translations and dilations commonly present in time series data. The idea behind DTW is to measure the distance between two time series $\vec{x}$ and $\vec{y}$ by choosing some indexing such that when taking the euclidean distance according to the proposed indexing, the distance is minimized. This makes the DTW resistant to translation and warping of time series. 
+        
     \section{Results}
     The UMAP training took less than a minute for all 6600 training set observations, which is admirable performance. For the KNN classifier, we used the 100 nearest neighbors to classify the test set. Observing the visualizations, it seems plausible that this is a valid (though imperfect) method for classifying the data points. We see that this is indeed the case; this strategy had 81\% accuracy for gender classification, and an impressive 64\% accuracy for digit classification. This is much better than random (10\%) and is a useful baseline to compare our GMMHMM against. 
     
@@ -143,6 +145,9 @@
         \caption{Transformation of data using UMAP to project into 2 dimensions. The different color clusters correspond to the gender of the speaker. Dots in red are male observations from the test set, and tend to cluster around the blue dots, which are males from the training set.}
         \label{fig:umapgendercompare}
     \end{figure}
+
+    KNN using DTW had very good results as displayed in Figure %insert laren's graph and the corresponding reference
+    \ref{}. Interestingly, the out of the box KNN with DTW did extremely well, especially on identifying digits. Interestingly, the classifier trained on padded data performed worse on identifying gender than on identifying digits, in terms of raw accuracy. This is surprising since a random algorithm on gender would perform with $.5$ accuracy and a random algorithm on digits would perform with $.1$ accuracy. 
     
     \section{Analysis}
     
@@ -154,6 +159,11 @@
     \subsection{GMMHMM}
     Our implementation and use of GMMHMM on this problem is in theory much better suited to the nature of the data. GMMHMMs have a lot of flexibility and by combining many different gaussian distributions in different combinations and sequences, they can be used to describe many types of patterns in high dimensional data. A particular feature of GMMHMMs that lend themselves towards this particular problem is their ability to use temporal information. Since each Gaussian HMM has state transition going on behind the scenes, they are very much able to recognize and use temporal relationships in data. This feature leads us to expect that GMMHMMs will be able to perform well at this task of language recognition. 
     Our initial results with GMMHMMs suggest a measure of careful optimism that, with more time and training and using more of the data our GMMHMMs will perform better and better. 
+    
+    \subsection{KNN with DTW}
+    This is the only algorithm that we used that was specifically designed for classifying time series, and so perhaps it is not so surprising that this KNN algorithm was so successful. In particular, DTW is particularly suited for making the most of data with irregular length that has been padded with zeros. Padding is more likely to get mapped to padding, and then nonpadded soundwaves are dynamically mapped to the nonpadded soundwaves of the other wave. Furthermore, it makes sense that the padded data gave better results than the truncated data, as the algorithm has a lot more data to work with.  
+    
+    Another interesting result with DTW was how the number identification worked better than gender identification. One possible reason for this surprising result is due to the fact that KNN is best at finding roughly spherical clusters, as opposed to long parallel clusters. Note how in the above figures of UMAP, there isn't really a single cluster that contains all the males/females, but rather many clusters. In this sense, the limited shapes inherent in the KNN algorithm are worse suited for clustering on the gendered data. 
     
     \section{Ethical Considerations}
     There are several ethical considerations for the use and misuse of this technique. It could be used to spy on and censor people in Arab countries. In the hands of the wrong people, it could be used to control people with devastating effects.. If used maliciously, it could be a vehicle for political control. 
